@@ -9,15 +9,15 @@ TARGET_DISABLE_EPPE := true
 # Setup build characteristics
 PRODUCT_INCLUDE_TAGS := com.android.mainline mainline_module_prebuilt_monthly_release
 
-ifneq ($(MAINLINE_INCLUDE_UWB_MODULE), false)
+ifeq ($(MAINLINE_INCLUDE_UWB_MODULE), true)
 MAINLINE_INCLUDE_UWB_MODULE := true
 endif #MAINLINE_INCLUDE_UWB_MODULE
 
-ifneq ($(MAINLINE_INCLUDE_WIFI_MODULE), false)
+ifeq ($(MAINLINE_INCLUDE_WIFI_MODULE), true)
 MAINLINE_INCLUDE_WIFI_MODULE := true
 endif #MAINLINE_INCLUDE_WIFI_MODULE
 
-ifneq ($(MAINLINE_INCLUDE_BTSERVICES_MODULE), false)
+ifeq ($(MAINLINE_INCLUDE_BTSERVICES_MODULE), true)
 MAINLINE_INCLUDE_BTSERVICES_MODULE := true
 
 # Overlay
@@ -29,7 +29,7 @@ PRODUCT_PACKAGES += \
     GoogleBluetoothLegacyMigration
 endif #MAINLINE_INCLUDE_BTSERVICES_MODULE
 
-ifneq ($(MAINLINE_INCLUDE_VIRT_MODULE), false)
+ifeq ($(MAINLINE_INCLUDE_VIRT_MODULE), true)
 MAINLINE_INCLUDE_VIRT_MODULE := true
 
 $(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
