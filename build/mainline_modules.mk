@@ -32,6 +32,10 @@
 #   - if not defined, per-module option will be used
 #   MAINLINE_COMPRESS_APEX_<module> := true or false
 #   - per-module option that controls whether to use compresssed variant
+# [ LEGACY_INTEGRATION
+#   MAINLINE_INCLUDE_TETHERING_MODULE := true or false
+#   - when it is true, TETHERING module will be added to PRODUCT_PACKAGES
+# ] LEGACY_INTEGRATION
 #
 
 PRODUCT_SOONG_NAMESPACES += \
@@ -237,11 +241,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/apex/com.google.android.sdkext.apex
 
-# Tethering
+# [ LEGACY_INTEGRATION
+# Optional Tethering
+MAINLINE_INCLUDE_TETHERING_MODULE ?= false
+ifeq ($(MAINLINE_INCLUDE_TETHERING_MODULE),true)
 PRODUCT_PACKAGES += \
     com.google.android.tethering
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/apex/com.google.android.tethering.apex
+endif
+
+# ] LEGACY INTEGRATION
 
 # Optional Uwb
 MAINLINE_INCLUDE_UWB_MODULE ?= false
