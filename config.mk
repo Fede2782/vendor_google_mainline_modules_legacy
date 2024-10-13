@@ -9,6 +9,10 @@ TARGET_DISABLE_EPPE := true
 # Setup build characteristics
 PRODUCT_INCLUDE_TAGS := com.android.mainline mainline_module_prebuilt_monthly_release
 
+ifeq ($(MAINLINE_INCLUDE_RKP_MODULE), true)
+MAINLINE_INCLUDE_RKP_MODULE := true
+endif #MAINLINE_INCLUDE_RKP_MODULE
+
 ifeq ($(MAINLINE_INCLUDE_UWB_MODULE), true)
 MAINLINE_INCLUDE_UWB_MODULE := true
 endif #MAINLINE_INCLUDE_UWB_MODULE
